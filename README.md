@@ -18,27 +18,6 @@ This project is a small desktop application that uses a Tkinter GUI to fetch, di
 - The `google.genai` client library to interact with the Generative AI API.  
   (You may need to install this package—check the official documentation for installation instructions.)
 
-## Setup
-
-1. Clone the repository:
-   ```
-   git clone https://github.com/your-username/generative-ai-models-manager.git
-   cd generative-ai-models-manager
-   ```
-
-2. (Optional) Create a Python virtual environment:
-   ```
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows use: venv\Scripts\activate
-   ```
-
-3. Install any required dependencies. For example, if you need to install the google.genai library, you might do something like:
-   ```
-   pip install google-genai
-   ```
-
-4. Make sure that you have an API key for Google Generative AI. When you first run the application, you will be prompted to input your API key.
-
 ## Usage
 
 Simply run the application script:
