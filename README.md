@@ -22,9 +22,9 @@ This project is a small desktop application that uses a Tkinter GUI to fetch, di
 
 Simply run the application script:
 ```
-python your_script.py
+python  main.py.py
 ```
-Replace `your_script.py` with the name of your main Python file. The application will perform the following operations on startup:
+Replace ` main.py.py` with the name of your main Python file. The application will perform the following operations on startup:
 
 - Create a local SQLite database (if it doesn’t already exist) with tables to store your API key and model details.
 - Prompt you for your API key if it is not already saved.
@@ -40,7 +40,7 @@ Replace `your_script.py` with the name of your main Python file. The application
 - `app_data.db`  
   The local SQLite database used for storing the API key and model details.
 
-- `your_script.py`  
+- ` main.py.py`  
   The main Python script that:
   - Creates the database and tables (if needed)
   - Loads/saves the API key and models
