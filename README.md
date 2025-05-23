@@ -53,3 +53,16 @@ Replace ` main.py.py` with the name of your main Python file. The application wi
 ## Customization & Contribution
 
 Feel free to fork this repository and improve the project by adding features or refactoring the code. Contributions of any kind are welcome. Please submit issues or pull requests through GitHub.
+
+## Command-Line Interface
+
+A simple CLI is provided in `cli.py` to list available models without using the GUI.
+After ensuring your API key is stored (e.g., via your database retrieval logic), install dependencies:
+```bash
+pip install -r requirements.txt
+```
+Run the CLI to fetch and display model information:
+```bash
+python cli.py list-models
+```
+This will print each model's JSON fields to stdout.
