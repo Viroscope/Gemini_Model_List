@@ -130,22 +130,16 @@ def list_available_models(api_key, text_widget, listbox):
                     # Model is new (not in DB)
                     new_or_updated_models.append((model.display_name, "new"))
                 else:
-                    # Model exists, we will compare it with the database
+                    # Model exists, compare with database record
                     for existing_model in existing_models:
-                        if existing_model[1] == model.name:
-                            ghost_model = {
-                                "Name": model.name,
-                                "Display Name": model.display_name,
-                                "Description": model.description,
-                                "Version": model.version,
-                                "Input Token Limit": model.input_token_limit,
-                                "Output Token Limit": model.output_token_limit
-                            }
-                        if (existing_model[2] != ghost_model["Display Name"] or
-                            existing_model[3] != ghost_model["Description"] or
-                            existing_model[4] != ghost_model["Version"] or
-                            existing_model[5] != ghost_model["Input Token Limit"] or
-                            existing_model[6] != ghost_model["Output Token Limit"]):
+                        if existing_model[1] != model.name:
+                            continue
+                        # existing_model fields: (id, name, display_name, description, version, input_limit, output_limit)
+                        if (existing_model[2] != model.display_name or
+                            existing_model[3] != model.description or
+                            existing_model[4] != model.version or
+                            existing_model[5] != model.input_token_limit or
+                            existing_model[6] != model.output_token_limit):
                             new_or_updated_models.append((model.display_name, "updated"))
                         break
 
