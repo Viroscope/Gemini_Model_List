@@ -188,6 +188,8 @@ def create_gui(api_key):
     """Creates the GUI window."""
     window = tk.Tk()
     window.title("Generative AI Models")
+    # Dark mode toggle state
+    dark_mode = tk.BooleanVar(value=False)
 
     def settings():
         new_api_key = simpledialog.askstring("API Key", "Enter your API key:", initialvalue=load_api_key())
@@ -204,6 +206,7 @@ def create_gui(api_key):
     settings_menu = tk.Menu(menubar, tearoff=0)
     settings_menu.add_command(label="Settings", command=settings)
     menubar.add_cascade(label="File", menu=settings_menu)
+    # Configure the window to display this menu
     window.config(menu=menubar)
 
     listbox_frame = tk.Frame(window)
@@ -224,7 +227,24 @@ def create_gui(api_key):
     text_widget.pack(fill=tk.BOTH, expand=True)
 
     list_available_models(api_key, text_widget, listbox)
-
+    # Theme menu
+    # Add dark mode toggle to existing menu
+    view_menu = tk.Menu(menubar, tearoff=0)
+    def apply_theme():
+        if dark_mode.get():
+            bg, fg, sel_bg = '#2e2e2e', '#ffffff', '#555555'
+        else:
+            bg, fg, sel_bg = 'white', 'black', '#cce6ff'
+        window.configure(bg=bg)
+        listbox_frame.configure(bg=bg)
+        text_frame.configure(bg=bg)
+        listbox.configure(bg=bg, fg=fg, selectbackground=sel_bg)
+        text_widget.configure(bg=bg, fg=fg, insertbackground=fg)
+    view_menu.add_checkbutton(label="Dark Mode", variable=dark_mode,
+                              onvalue=True, offvalue=False,
+                              command=apply_theme)
+    menubar.add_cascade(label="View", menu=view_menu)
+    apply_theme()
     window.mainloop()
 
 
